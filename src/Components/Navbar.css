@@ -1,24 +1,34 @@
+/* Navbar.css */
+
 .navbar {
-    background-color:grey;
-    color: #fff;
-    padding: 5px 5px;
-    display: flex;
-    justify-content: flex-end; /* Align the logout button to the right */
-    height:50px;
-  }
-  
-  .navbar button {
-   
-    background-color: #e74c3c;
-    height:30px;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .navbar button:hover {
-    background-color: #c0392b;
-  }
-  
-  
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar input {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.navbar label,
+.navbar select {
+  margin-right: 10px;
+}
+
+.navbar button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  background-color: #c0392b;
+}
+
+/* Add more styles as needed */
