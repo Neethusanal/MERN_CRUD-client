@@ -15,6 +15,11 @@ const Navbar = () => {
     localStorage.removeItem("token");
     navigate('/')
   }
+  const handleCreateUser = () => {
+    // Handle the logic to navigate to the create user page
+    navigate('/create-user');
+  };
+
   return (
     <div className="navbar">
 
@@ -61,6 +66,9 @@ const Navbar = () => {
           </select>
         </label>
       </div>
+
+     {/* Create New User button */}
+      <button onClick={handleCreateUser}>Create New User</button>
 
       {/* Create Team button */}
        <button >Create Team</button> 

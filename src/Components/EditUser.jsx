@@ -2,19 +2,24 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './EditUser.css';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Swal from 'sweetalert2';
 const EditUser = () => {
-     const location=useLocation()
+      const location=useLocation()
      const user=location.state?.userdata
+    
      const [firstname,setFirstname]=useState('')
      const [lastname,setLastname]=useState('')
      const [email,setEmail]=useState('')
      const [gender,setGender]=useState('')
      const [avatar,setAvatar]=useState('')
      const [domain,setDomain]=useState('')
+     const [id,setId]=useState('')
+     const navigate=useNavigate()
    
   
-    
+    console.log(user,"jjgggggggggffffffffff")
     useEffect(() => {
     setFirstname?.(user.first_name)
     setLastname?.(user.last_name)
@@ -22,11 +27,26 @@ const EditUser = () => {
     setGender?.(user.gender)
     setAvatar?.(user.avatar)
     setDomain?.(user.domain)
+    setId?.(user.id)
     
     }, [])
     const handleUpdate = async (e) => {
       e.preventDefault();
-    }
+      console.log(firstname,lastname,gender,domain,email,"kkkkkk")
+       axios.put("http://localhost:4000/edituser",{id,firstname,lastname,gender,email,domain,avatar}, { withCredentials: true }).then((response)=>{
+      
+      if(response.data.status){
+        Swal.fire(response.data.message);
+        navigate('/')
+      }else{
+        Swal.fire(response.data.message);
+      }
+      console.log(response,"edituser check")
+     })
+     
+}
+      
+    
     
   return (
     <div>

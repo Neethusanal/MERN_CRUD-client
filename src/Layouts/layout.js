@@ -6,10 +6,10 @@ import Navbar from '../Components/Navbar'
 const Layout = ()=>{
     return (
     <>
-
+<div className="max-w-screen-2xl mx-auto rounded-2xl">
    <Navbar/>
     <Outlet />
-  
+    </div>
     </>
     )
 }
