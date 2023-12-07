@@ -37,7 +37,7 @@ const EditUser = () => {
       
       if(response.data.status){
         Swal.fire(response.data.message);
-        navigate('/')
+        navigate('/home')
       }else{
         Swal.fire(response.data.message);
       }
