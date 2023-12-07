@@ -1,6 +1,24 @@
-/* ProfileCard.css */
+.CreateUserButton {
+  background-color: #28a745; /* Green color */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.CreateUserButton:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.ProfileCardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .ProfileCard {
-  width: calc(33.33% - 40px); /* Adjust the width based on your design */
+  width: calc(33.33% - 20px); /* Updated width for two cards in a row */
   margin: 20px;
   box-sizing: border-box;
   display: inline-block;

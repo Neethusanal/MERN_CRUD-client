@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <div>
       
-      {filteredUsers.map((user) => (
+    {filteredUsers.map((user) => (
        <div className="ProfileCard">
        <div className="ProfileCardHeader">
          <img src={user.avatar} alt="profile-picture" />

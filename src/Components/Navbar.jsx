@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -9,7 +11,7 @@ const Navbar = () => {
     gender: null,
     availability: null,
   });
-
+  const users = useSelector((state) => state.user.userDetails);
   const navigate=useNavigate()
   const handleLogout=()=>{
     localStorage.removeItem("token");
