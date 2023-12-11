@@ -6,6 +6,8 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import Layout from './Layouts/layout';
 import EditUser from './Components/EditUser';
+import AddUser from './Components/AddUser';
+
 function App() {
   return (
     <>
@@ -15,6 +17,8 @@ function App() {
       <Route element={<Layout/>}>
         <Route path ='/home' element={<Home/>}/>
         <Route path='/edit' element={<EditUser/>}/>
+        <Route path='/createuser' element={<AddUser/>}/>
+        
         </Route>
       </Routes>
     </Router>

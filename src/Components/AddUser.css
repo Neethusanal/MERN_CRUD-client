@@ -1,0 +1,75 @@
+
+
+.flex-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #666;
+    padding: 20px; /* Increase padding for better spacing */
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px; /* Add margin to separate heading from form */
+  }
+  
+  .form {
+    margin-top: 10px;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-input,
+  .form-checkbox {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+    margin-bottom: 10px; /* Add margin between input fields */
+  }
+  
+  .form-input:focus {
+    border-color: #007bff;
+  }
+  
+  .button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px; /* Increase padding for a more appealing button */
+    margin-top: 10px; /* Add margin between inputs and button */
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-checkbox div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Add margin between checkboxes */
+  }
+  
+  .form-label-checkbox {
+    margin-left: 8px; /* Add space between checkbox and label */
+  }
+  

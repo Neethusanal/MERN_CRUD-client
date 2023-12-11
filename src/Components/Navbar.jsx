@@ -19,7 +19,7 @@ const Navbar = () => {
   }
   const handleCreateUser = () => {
     // Handle the logic to navigate to the create user page
-    navigate('/create-user');
+    navigate('/createuser');
   };
 
   return (
