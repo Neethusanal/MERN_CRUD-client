@@ -21,6 +21,9 @@ const Navbar = () => {
     // Handle the logic to navigate to the create user page
     navigate('/createuser');
   };
+  const handleSearchChange=()=>{
+    
+  }
 
   return (
     <div className="navbar">
@@ -32,7 +35,7 @@ const Navbar = () => {
         type="text"
         placeholder="Search by Name"
         value={searchQuery}
-        // onChange={handleSearchChange}
+        onChange={handleSearchChange}
       />
 
       {/* Filters */}

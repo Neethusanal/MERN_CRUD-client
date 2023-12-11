@@ -11,13 +11,44 @@ const Home = () => {
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10)
+  const [userId, setUserId] = useState('');
   const users = useSelector((state) => state.user.userDetails);
   console.log(users)
 
+  useEffect(() => {
+    // Fetch data from the server when the component mounts or when currentPage changes
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(`http://localhost:4000/getusers?page=${currentPage}&limit=${pageSize}`);
+        dispatch(setUserDetails(data.result));
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchData();
+  }, [currentPage, dispatch, pageSize]);
+  const totalPages = Math.ceil(users.length / pageSize);
+  const paginatedUsers = users.slice((currentPage - 1) * pageSize, currentPage * pageSize);
   const filteredUsers = users.filter((user) => !user.deleted);
 
   const handleEdit = (userdata) => {
     navigate('/edit', { state: { userdata } });
+  };
+  const handleUserIdChange = (e) => {
+    setUserId(e.target.value);
+  };
+
+  const handleSearchUser = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/getuser/${userId}`);
+      dispatch(setUserDetails([response.data])); // Assuming setUserDetails is an action
+    } catch (error) {
+      console.error('Error fetching user details:', error);
+      dispatch(setUserDetails([])); // Set an empty array if user is not found or handle differently
+    }
   };
   const handleDelete = async (id) => {
     try {
@@ -33,10 +64,24 @@ const Home = () => {
       // Handle the error, show an alert, or log it
     }
   };
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
 
   return (
     <div>
-      
+      <div className='header'>
+      <input
+        type="text"
+        placeholder="Enter User ID"
+        value={userId}
+        onChange={handleUserIdChange}
+      />
+      <button onClick={handleSearchUser}>Search</button>
+      </div>
     {filteredUsers.map((user) => (
        <div className="ProfileCard">
        <div className="ProfileCardHeader">
@@ -55,6 +100,17 @@ const Home = () => {
        </div>
      </div>
       ))}
+       <div>
+      
+       <div className="pagination">
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            Previous
+          </button>
+          <span>{currentPage}</span>
+          <button onClick={handleNextPage}>Next</button>
+        </div>
+  
+    </div>
     </div>
     
     
