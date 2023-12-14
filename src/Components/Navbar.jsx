@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserDetails } from '../Redux/UserSlice';
 
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  //const [filteredUsers, setFilteredUsers] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({
     domain: null,
     gender: null,
     availability: null,
   });
+  const dispatch = useDispatch();
   const users = useSelector((state) => state.user.userDetails);
   const navigate=useNavigate()
   const handleLogout=()=>{
@@ -21,9 +24,21 @@ const Navbar = () => {
     // Handle the logic to navigate to the create user page
     navigate('/createuser');
   };
-  const handleSearchChange=()=>{
+  const handleSearchChange = (e) => {
+    console.log(e.target)
+
+    setSearchQuery(e.target.value);
+    console.log(e.target)
     
-  }
+    
+    if (!users) {
+      return; // Exit the function if users is undefined or null
+    }
+    const filtered = users.filter((user) => user.first_name.toLowerCase().includes(searchQuery));
+    dispatch(setUserDetails(filtered));
+  };
+  
+  
 
   return (
     <div className="navbar">
@@ -32,11 +47,11 @@ const Navbar = () => {
 
       {/* Search input */}
       <input
-        type="text"
-        placeholder="Search by Name"
-        value={searchQuery}
-        onChange={handleSearchChange}
-      />
+  type="text"
+  placeholder="Search by Name"
+  value={searchQuery}
+  onChange={(e) => setSearchQuery(e.target.value)}
+/>
 
       {/* Filters */}
       <div>
